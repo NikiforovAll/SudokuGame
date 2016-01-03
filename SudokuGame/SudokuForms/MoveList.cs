@@ -9,13 +9,13 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace SudokuForms
 {
     [Serializable]
-   public static  class MoveList
+    public static class MoveList
     {
-        public static Dictionary<Point,int> moveLog = new Dictionary<Point,int>() ;
+        public static Dictionary<Point, int> moveLog = new Dictionary<Point, int>();
 
-        public static  void  addMove(Point p , int val)
+        public static void addMove(Point p, int val)
         {
-            if(moveLog.ContainsKey(p))
+            if (moveLog.ContainsKey(p))
             {
                 moveLog[p] = val;
             }

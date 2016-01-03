@@ -29,7 +29,7 @@ namespace SudokuForms
             graphicalOverlay1.Owner = this;
             graphicalOverlay1.Paint += graphicalOverlay1_Paint;
             this.FormClosed += Form1_FormClosed;
-           
+
         }
         public void DrawBoard()
         {
@@ -90,7 +90,7 @@ namespace SudokuForms
                 moveLog = (Dictionary<Point, int>)objBinaryFormatter.Deserialize(objstreamdeserialize_moveLog);
                 foreach (KeyValuePair<Point, int> kvp in moveLog)
                 {
-                    sudokuGrid.makeMove(kvp.Key.X, kvp.Key.Y, kvp.Value);//y,x
+                    sudokuGrid.MakeMove(kvp.Key.X, kvp.Key.Y, kvp.Value);//y,x
                 }
                 gameBoard = new SudokuTableGraphic(sudokuGrid);
                 this.Controls.Add(gameBoard);

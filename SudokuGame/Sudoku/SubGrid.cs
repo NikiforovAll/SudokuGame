@@ -1,36 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sudoku
 {
     [Serializable]
     public class SubGrid
     {
-
-        Cell[,] Arr = new Cell[3, 3];
+        private readonly Cell[,] _arr = new Cell[3, 3];
 
         public SubGrid()
         {
             for (int i = 0; i < 3; i++)
                 for (int j = 0; j < 3; j++)
-                    Arr[i, j] = new Cell();
+                    _arr[i, j] = new Cell();
         }
 
-        public Cell[,] GetCells
-        {
-            get { return Arr; }
-        }
+        public Cell[,] GetCells => _arr;
 
-        public void setCell(int x, int y, int value)
+        public void SetCell(int x, int y, int value)
         {
             if (x < 3 && y < 3 && x >= 0 && y >= 0)
             {
-                Arr[x, y].CellVal = value;
+                _arr[x, y].CellVal = value;
             }
-
         }
 
         public bool IsInSubGrid(int val)
@@ -47,7 +38,7 @@ namespace Sudoku
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    if (Arr[i, j].CellVal == val)
+                    if (_arr[i, j].CellVal == val)
                     {
                         posY = i;
                         posX = j;
@@ -59,15 +50,14 @@ namespace Sudoku
             return false;
         }
 
-
-        public void swapValue(int x, int y)
+        public void SwapValue(int x, int y)
         {
             int xi, xj, yi, yj, tmpVal;
             if (this.IsInSubGrid(x, out xi, out xj) && this.IsInSubGrid(y, out yi, out yj))
             {
-                tmpVal = Arr[xi, xj].CellVal;
-                Arr[xi, xj].CellVal = Arr[yi, yj].CellVal;
-                Arr[yi, yj].CellVal = tmpVal;
+                tmpVal = _arr[xi, xj].CellVal;
+                _arr[xi, xj].CellVal = _arr[yi, yj].CellVal;
+                _arr[yi, yj].CellVal = tmpVal;
             }
         }
 

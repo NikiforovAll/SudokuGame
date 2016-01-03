@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sudoku
 {
     [Serializable]
     public class Cell
     {
-        private int value;
-        private bool isUnChangeable;
+        private int _value;
+        private bool _isUnChangeable;
         public Cell()
         {
-            isUnChangeable = true;            
-
+            _isUnChangeable = true;
         }
         public int CellVal
         {
@@ -22,20 +17,20 @@ namespace Sudoku
             {
                 if (value < 10 && value >= 0)
                 {
-                    this.value = value;
+                    this._value = value;
                 }
                 else
                 {
                     throw new Exception("Inappropriate  value of cell");
                 }
             }
-            get { return value; }
+            get { return _value; }
         }
 
         public bool IsUnchangable
         {
-            get { return isUnChangeable; }
-            set { isUnChangeable = value; }
+            get { return _isUnChangeable; }
+            set { _isUnChangeable = value; }
         }
     }
 }

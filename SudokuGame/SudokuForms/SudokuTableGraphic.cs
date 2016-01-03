@@ -11,10 +11,10 @@ using Sudoku;
 
 namespace SudokuForms
 {
-   
-    public class SudokuTableGraphic:TableLayoutPanel
+
+    public class SudokuTableGraphic : TableLayoutPanel
     {
-        public  SudokuGrid sudokuGrid;
+        public SudokuGrid sudokuGrid;
         public bool isFinish;
         public SudokuTableGraphic(SudokuGrid sudokuGrid)
         {
@@ -24,48 +24,48 @@ namespace SudokuForms
             this.AutoSize = true;
             this.Top = 60;
             this.Left = 80;
-          //  this.Width = 150;
-           
-           // this.CellBorderStyle = TableLayoutPanelCellBorderStyle.None;
-            
+            //  this.Width = 150;
+
+            // this.CellBorderStyle = TableLayoutPanelCellBorderStyle.None;
+
 
             for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)
                 {
-                    SudokuCell sc = new SudokuCell(sudokuGrid[i,j],j,i);
-                    if(!sudokuGrid[i,j].IsUnchangable)
-                    sc.render(sudokuGrid[i,j].CellVal);
+                    SudokuCell sc = new SudokuCell(sudokuGrid[i, j], j, i);
+                    if (!sudokuGrid[i, j].IsUnchangable)
+                        sc.render(sudokuGrid[i, j].CellVal);
                     this.Controls.Add(sc, j, i);
                 }
             }
 
-           
-         
+
+
         }
 
         public void fillBoard()
         {
-            if(!isFinish)
+            if (!isFinish)
             {
                 this.Controls.Clear();
-            Cell[,] ans = sudokuGrid.GetAnswer();
-            for (int i = 0; i < 9; i++)
-            {
-                for (int j = 0; j < 9; j++)
+                Cell[,] ans = sudokuGrid.GetAnswer();
+                for (int i = 0; i < 9; i++)
                 {
-                    
-                    SudokuCell sc = new SudokuCell(ans[i,j], j, i);
-                    this.Controls.Add(sc, j, i);
+                    for (int j = 0; j < 9; j++)
+                    {
+
+                        SudokuCell sc = new SudokuCell(ans[i, j], j, i);
+                        this.Controls.Add(sc, j, i);
+                    }
                 }
-            }
-            isFinish = true;
-            Form1.sudokuGrid = new SudokuGrid();
+                isFinish = true;
+                Form1.sudokuGrid = new SudokuGrid();
             }
 
-            
+
         }
 
-        
+
     }
 }
